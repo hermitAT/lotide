@@ -18,25 +18,28 @@ const assertArraysEqual = function(actual, expected) {
 };
 
 const letterPositions = function(string) {
-  const returnObject = {};
+  const letterIdxLibrary = {};
   
   for (let i = 0; i < string.length; i++) {
-    let letter = string[i];
+    const letter = string[i];
+    const letterIdxPos = string.indexOf(letter, i);
+    
     if (letter !== ' ') {
       // if the property doesn't exist yet, create it and create an array
       // containing the index
-      if (!Array.isArray(returnObject[letter])) {
-        returnObject[letter] = [string.indexOf(letter, i)];
+      if (!Array.isArray(letterIdxLibrary[letter])) {
+        letterIdxLibrary[letter] = [letterIdxPos];
       } else {
-        // if returnObject contains a property with the same name as the letter,
+        // if letterIdxLibrary contains a property with the same name as the letter,
         // push the index that the letter is at to an array within that property.
-        returnObject[letter].push(string.indexOf(letter, i));
+        letterIdxLibrary[letter].push(letterIdxPos);
       }
     }
   }
-  return returnObject;
+  return letterIdxLibrary;
 };
 
 console.log(letterPositions("lighthouse in the house"));
 console.log(letterPositions("hello"));
+
 assertArraysEqual(letterPositions("hello").e, [1]);
