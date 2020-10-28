@@ -24,8 +24,7 @@ const middle = function(array) {
   if (array.length <= 2) {
     return middleElements;
   } else if (array.length % 2 === 0) {
-    middleElements.push(array[midPoint - 1]);
-    middleElements.push(array[midPoint]);
+    middleElements.push(array[midPoint - 1], array[midPoint]);
   } else if (array.length % 2 !== 0) {
     middleElements.push(array[midPoint]);
   }
