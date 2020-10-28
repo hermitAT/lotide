@@ -8,9 +8,9 @@ const assertEqual = function(actual, expected) {
 
 const findKeyByValue = function(object, value) {
 
-  for (const item in object) {
-    if (object[item] === value) {
-      return item;
+  for (const key in object) {
+    if (object[key] === value) {
+      return key;
     }
   }
 };
@@ -25,3 +25,4 @@ assertEqual(findKeyByValue(bestTVShowsByGenre, "The Wire"), "drama");
 assertEqual(findKeyByValue(bestTVShowsByGenre, "That '70s Show"), undefined);
 assertEqual(findKeyByValue(bestTVShowsByGenre, "The Expanse"), "sciFi");
 assertEqual(findKeyByValue(bestTVShowsByGenre, "That '70s Show"), "drama"); // this one should fail, all else should pass
+assertEqual(findKeyByValue(bestTVShowsByGenre, "Brooklyn Nine-Nine"), "comedy");
