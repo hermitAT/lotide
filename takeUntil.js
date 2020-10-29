@@ -17,7 +17,7 @@ const assertArraysEqual = function(actual, expected) {
   }
 };
 
-const takeUntil = function(array, callback) {
+const takeUntil = (array, callback) => {
   let passedValues = [];
   for (const item of array) {
     if (!callback(item)) {
