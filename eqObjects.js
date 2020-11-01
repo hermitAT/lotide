@@ -28,30 +28,32 @@ const eqObjects = function(object1, object2) {
     return false;
   } else {
     for (const key of object1Keys) {
-      if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
+      if (!Array.isArray(object1[key]) && !Array.isArray(object2[key])) {
+        return eqObjects(object1[key], object2[key]);
+      } else if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
         return eqArrays(object1[key], object2[key]);
       } else if (object1[key] !== object2[key]) {
         return false;
       }
+      
     }
   } return true;
 };
 
-const ab = { a: "1", b: "2" };
-const ba = { b: "2", a: "1" };
-eqObjects(ab, ba); // => true
+const aZ = { a: { z: 1 }, b: 2 };
+const Za = { a: { z: 1 }, b: 2 };
+eqObjects(aZ, Za); // => true
 
-const abc = { a: "1", b: "2", c: "3" };
-eqObjects(ab, abc); // => false
+assertEqual(eqObjects(aZ, Za), true);
 
-const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1" };
-eqObjects(cd, dc); // => true
+const bZ = { a: { z: { y: { x: 0 } } }, b: 2 };
+const Zb = { a: { z: { y: { x: 0 } } }, b: 2 };
+eqObjects(bZ, Zb); // => true
 
-const cd2 = { c: "1", d: ["2", 3, 4] };
-eqObjects(cd, cd2); // => false
+assertEqual(eqObjects(bZ, Zb), true);
 
-assertEqual(eqObjects(ab, ba), true);
-assertEqual(eqObjects(ab, abc), false);
-assertEqual(eqObjects(cd, dc), true);
-assertEqual(eqObjects(cd, cd2), false);
+const aY = { a: { y: 0, z: 1 }, b: 2 };
+const Ya = { a: { x: { y: 1 } }, b: 2 };
+eqObjects(aY, Ya); // => false
+
+assertEqual(eqObjects(aY, Ya), false);
