@@ -1,4 +1,4 @@
-const head = function(array) {
+const head = (array) => {
   return array[0];
 };
 
