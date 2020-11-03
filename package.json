@@ -1,7 +1,7 @@
 {
-  "name": "lotide",
+  "name": "@hermit_at/lotide",
   "version": "1.0.0",
-  "description": "",
+  "description": "A mini clone of the [Lodash](https://lodash.com) library.",
   "main": "assertArraysEqual.js",
   "directories": {
     "test": "test"
@@ -13,7 +13,10 @@
     "type": "git",
     "url": "git+https://github.com/hermitAT/lotide.git"
   },
-  "author": "Adam Thorne",
+  "author": {
+    "name": "Adam Thorne",
+    "email": "ahthornev2@gmail.com"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hermitAT/lotide/issues"
